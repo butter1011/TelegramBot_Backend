@@ -8,22 +8,21 @@ exports.userFindSave = async (req, res) => {
     const user = await UserInfo.find({ user_id: user_id });
 
     if (user.length === 0) {
-      console.log("user not found");
-
       // Create new user
       const newUser = new UserInfo({
         user_id: user_id,
       });
 
-      await newUser.save();
+      await newUser.save(); // Save the new user
+
       res.status(200).json({
         newUser,
       });
+    } else {
+      res.status(200).json({
+        user,
+      });
     }
-
-    res.status(200).json({
-      user,
-    });
   } catch (error) {
     res.status(401).json(error);
   }
