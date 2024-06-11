@@ -5,8 +5,8 @@ const userInfoSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  id: {
-    type: Number,
+  user_id: {
+    type: String,
     required: true,
     unique: true,
   },
