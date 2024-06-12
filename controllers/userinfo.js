@@ -5,7 +5,7 @@ exports.userFindSave = async (req, res) => {
   try {
     // Get user_id
     const user_id = req.body.user_id;
-    const user = await UserInfo.find({ user_id: user_id });
+    const user = await UserInfo.findOne({ user_id: user_id });
 
     if (user.length === 0) {
       // Create new user
