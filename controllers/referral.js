@@ -12,12 +12,12 @@ exports.setReferralId = async (req, res) => {
     const user = await UserInfo.findOne({ user_id: user_id });
     const referral_user = await UserInfo.findOne({ user_id: referral_id });
 
-    if (!user && !referral_user && !user.referral_id) {
+    if (!user && !referral_user && user.referral_state === false) {
       // Create new Referral
       const newData = new ReferralInfo({
         user_id: user_id,
         referral_id: referral_id,
-        referral_state: true,
+        referral_state: false,
       });
 
       await newData.save(); // Save the Referral
