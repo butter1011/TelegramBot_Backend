@@ -1,7 +1,23 @@
 const mongoose = require("mongoose");
 
 const referralInfoSchema = new mongoose.Schema({
-  referral_id: {
+  referral_id_1: {
+    type: String,
+    required: false,
+  },
+  referral_id_2: {
+    type: String,
+    required: false,
+  },
+  referral_id_3: {
+    type: String,
+    required: false,
+  },
+  referral_id_4: {
+    type: String,
+    required: false,
+  },
+  referral_id_5: {
     type: String,
     required: false,
   },
