@@ -14,7 +14,7 @@ exports.setReferralId = async (req, res) => {
 
     if (!user && !referral_user) {
       // Create new Referral
-      const newData = new Referral({
+      const newData = new ReferralInfo({
         user_id: user_id,
         referral_id: referral_id,
       });
