@@ -5,9 +5,7 @@ const ReferralInfo = require("../models/Referral");
 exports.setReferralId = async (req, res) => {
   try {
     // Get user_id & referral_id
-    const data = req.body;
-    const user_id = data.user_id;
-    const referral_id = data.referral_id;
+    const { user_id, referral_id } = req.body;
 
     const user = await UserInfo.findOne({ user_id: user_id });
     const referral_user = await UserInfo.findOne({ user_id: referral_id });
