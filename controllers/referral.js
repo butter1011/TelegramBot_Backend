@@ -1,5 +1,5 @@
 const UserInfo = require("../models/User");
-const Referral = require("../models/Referral");
+const ReferralInfo = require("../models/Referral");
 
 // UserFindSave if not user, create it
 exports.setReferralId = async (req, res) => {
@@ -10,8 +10,9 @@ exports.setReferralId = async (req, res) => {
     const referral_id = data.referral_id;
 
     const user = await UserInfo.findOne({ user_id: user_id });
+    const referral_user = await UserInfo.findOne({ user_id: referral_id });
 
-    if (!user) {
+    if (!user && !referral_user) {
       // Create new Referral
       const newData = new Referral({
         user_id: user_id,

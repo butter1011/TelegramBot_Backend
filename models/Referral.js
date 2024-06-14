@@ -10,6 +10,11 @@ const referralInfoSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  referral_state: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -20,6 +25,6 @@ const referralInfoSchema = new mongoose.Schema({
   },
 });
 
-const UserInfo = mongoose.model("Referral", referralInfoSchema);
+const ReferralInfo = mongoose.model("Referral", referralInfoSchema);
 
-module.exports = UserInfo;
+module.exports = ReferralInfo;
