@@ -1,6 +1,34 @@
 const UserInfo = require("../models/User");
 
 // UserFindSave if not user, create it
+exports.setReferralId = async (req, res) => {
+  try {
+    // Get user_id
+    const user_id = req.body.user_id;
+    const user = await UserInfo.findOne({ user_id: user_id });
+
+    if (!user) {
+      // Create new user
+      const newUser = new UserInfo({
+        user_id: user_id,
+      });
+
+      await newUser.save(); // Save the new user
+
+      res.status(200).json({
+        newUser,
+      });
+    } else {
+      res.status(200).json({
+        user,
+      });
+    }
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
+// UserFindSave if not user, create it
 exports.userFindSave = async (req, res) => {
   try {
     // Get user_id
@@ -32,7 +60,6 @@ exports.userFindSave = async (req, res) => {
 exports.userDataSave = async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
     const userData = JSON.parse(data.data);
 
     const user = await UserInfo.findOne({ user_id: userData.user_id });
