@@ -24,12 +24,9 @@ exports.setReferralId = async (req, res) => {
         newData,
       });
     } else {
-      res.status(200).json({
-        user,
-      });
+      res.error();
     }
   } catch (error) {
     res.status(401).json(error);
   }
 };
-
