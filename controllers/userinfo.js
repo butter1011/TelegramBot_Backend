@@ -1,5 +1,5 @@
 const UserInfo = require("../models/User");
-const ReferralInfo = require("../models/Referral");
+const ReferralInfo = require("../models/Inviter");
 
 // UserFindSave if not user, create it
 exports.userFindSave = async (req, res) => {

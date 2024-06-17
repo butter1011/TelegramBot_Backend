@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
 
-const referralInfoSchema = new mongoose.Schema({
-  referral_id: {
+const inviterInfoSchema = new mongoose.Schema({
+  inviter_id: {
     type: String,
     required: false,
+    default: "",
   },
   user_id: {
     type: String,
     required: true,
     unique: true,
-  },
-  referral_state: {
-    type: Boolean,
-    required: false,
-    default: false,
   },
   createdAt: {
     type: Date,
@@ -25,6 +21,6 @@ const referralInfoSchema = new mongoose.Schema({
   },
 });
 
-const ReferralInfo = mongoose.model("Referral", referralInfoSchema);
+const InviterInfo = mongoose.model("Inviter", inviterInfoSchema);
 
-module.exports = ReferralInfo;
+module.exports = InviterInfo;
