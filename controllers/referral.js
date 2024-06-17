@@ -15,7 +15,7 @@ exports.setReferralId = async (req, res) => {
       const newData = new ReferralInfo({
         user_id: user_id,
         referral_id: referral_id,
-        referral_state: false,
+        referral_state: true,
       });
 
       await newData.save(); // Save the Referral
