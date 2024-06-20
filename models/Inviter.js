@@ -19,6 +19,12 @@ const inviterInfoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  walletAddress: {
+    type: String,
+  },
+  walletName: {
+    type: String,
+  },
 });
 
 const InviterInfo = mongoose.model("Inviter", inviterInfoSchema);
