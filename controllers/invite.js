@@ -8,21 +8,12 @@ exports.setInviteUser = async (req, res) => {
     const data = req.body;
     const user_id = data.data.user_id;
     const inviter_id = data.data.inviter_id;
-
-    console.log(`inviter_id------------->${inviter_id}`);
-    console.log(`user_id------------->${user_id}`);
-
     // find the user
     const user = await InviteInfo.findOne({ user_id: user_id });
-    console.log(`User InviterId------>${user.inviter_id}`);
-
-    console.log(user);
-    console.log(user.inviter_id);
 
     if (user && user.inviter_id == "") {
       user.inviter_id = inviter_id;
       const response = await user.save();
-      console.log("Inviter set correctly.");
       
       if (response) {
         const newUser = await UserInfo.findOne({ user_id: user_id });

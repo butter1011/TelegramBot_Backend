@@ -8,6 +8,7 @@ exports.userFindSave = async (req, res) => {
     // Get user_id
     const user_id = req.body.user_id;
     const user = await UserInfo.findOne({ user_id: user_id });
+    const currentTime = new Date();
 
     if (!user) {
       // Create new user
@@ -25,11 +26,11 @@ exports.userFindSave = async (req, res) => {
       await newReferral.save(); // Save the Referral
 
       res.status(200).json({
-        newUser,
+        newUser, currentTime
       });
     } else {
       res.status(200).json({
-        user,
+        user, currentTime
       });
     }
   } catch (error) {
@@ -78,6 +79,7 @@ exports.userDataSave = async (req, res) => {
       user.B3bitcoinBoostPS = userData.B3bitcoinBoostPS;
       user.B4bitcoinBoostPS = userData.B4bitcoinBoostPS;
       user.B5bitcoinBoostPS = userData.B5bitcoinBoostPS;
+      user.updatedAt = new Date();
 
       user.Tutorial = userData.Tutorial;
       const res = await user.save();
