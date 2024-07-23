@@ -14,7 +14,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://bitcoin-millionaire-html-5.vercel.app",
+    origin: [
+      "https://bitcoin-millionaire-html-5.vercel.app",
+      "https://frog-nut-test.vercel.app/"
+    ]
   })
 );
 
